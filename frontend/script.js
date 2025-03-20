@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const id = parseInt(document.getElementById('id').value);
 
-        fetch('http://localhost:5000/users', {
+        fetch('/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, id })
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch users from backend
     function fetchUsers() {
-        fetch('http://localhost:5000/users')
+        fetch('/users')
             .then(response => response.json())
             .then(users => {
                 userTable.innerHTML = ''; // Clear table
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Delete user
     function deleteUser(userId) {
-        fetch(`http://localhost:5000/users/${userId}`, { method: 'DELETE' })
+        fetch(`/users/${userId}`, { method: 'DELETE' })
             .then(response => response.json())
             .then(() => fetchUsers());
     }
